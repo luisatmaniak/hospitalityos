@@ -1,11 +1,12 @@
 <template>
   <div>
     <template v-for="component in components">
-      <os-button v-if="component.acf_fc_layout === 'button'" v-bind="component"></os-button>
+      <os-button v-if="component.acf_fc_layout === 'button'" v-bind="component"/>
 
       <complex-component v-if="component.acf_fc_layout === 'complex_component'" v-bind="component"/>
 
-      <slider v-if="component.acf_fc_layout === 'slider'" v-bind="component"/>
+      <acf-slider v-if="component.acf_fc_layout === 'slider'" v-bind="component"/>
+
       <br>
       <br>
     </template>
@@ -24,7 +25,7 @@ export default {
       ...this.$options.components,
       OsButton: () => import("./OsButton"),
       ComplexComponent: () => import("./ComplexComponent"),
-      Slider: () => import("./Slider")
+      AcfSlider: () => import("./AcfSlider"),
     };
   }
 };
