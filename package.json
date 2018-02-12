@@ -1,0 +1,56 @@
+{
+  "name": "hospitality-os",
+  "description": ":)",
+  "version": "0.1.0",
+  "author": "The Maniaks",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development node server",
+    "build:client": "cross-env NODE_ENV=production webpack --progress --hide-modules --config ./build/webpack.client.js ",
+    "build:server": "cross-env NODE_ENV=production webpack --progress --hide-modules --config ./build/webpack.server.js",
+    "build": "rimraf dist && yarn run build:client && yarn run build:server",
+    "start": "cross-env NODE_ENV=production node server"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ],
+  "dependencies": {
+    "axios": "^0.17.1",
+    "babel-polyfill": "^6.23.0",
+    "express": "^4.16.2",
+    "regenerator-runtime": "^0.11.1",
+    "vue": "^2.5.11",
+    "vue-router": "^3.0.1",
+    "vue-server-renderer": "^2.5.13",
+    "vuex": "^3.0.1",
+    "vuex-router-sync": "^5.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.6",
+    "friendly-errors-webpack-plugin": "^1.6.1",
+    "memory-fs": "^0.4.1",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "sw-precache-webpack-plugin": "^0.11.4",
+    "url-loader": "^0.6.2",
+    "vue-loader": "^14.1.1",
+    "vue-template-compiler": "^2.5.13",
+    "webpack": "next",
+    "webpack-cli": "^2.0.4",
+    "webpack-dev-middleware": "^2.0.5",
+    "webpack-hot-middleware": "^2.21.0",
+    "webpack-merge": "^4.1.1",
+    "webpack-node-externals": "^1.6.0"
+  }
+}
