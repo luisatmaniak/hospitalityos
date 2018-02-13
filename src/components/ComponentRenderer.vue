@@ -7,6 +7,8 @@
 
       <acf-slider v-if="component.acf_fc_layout === 'slider'" v-bind="component"/>
 
+      <two-image-slider v-if="component.acf_fc_layout === 'custom_2_image_slider'" v-bind="component"/>
+
       <br>
       <br>
     </template>
@@ -26,6 +28,7 @@ export default {
       OsButton: () => import("./OsButton"),
       ComplexComponent: () => import("./ComplexComponent"),
       AcfSlider: () => import("./AcfSlider"),
+      TwoImageSlider: () => import("./TwoImageSlider")
     };
   }
 };
