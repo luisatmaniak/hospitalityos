@@ -45,7 +45,7 @@
     "vue-loader": "^14.1.1",
     "vue-template-compiler": "^2.5.13",
     "webpack": "next",
-    "webpack-cli": "^2.0.4",
+    "webpack-cli": "^2.0.6",
     "webpack-dev-middleware": "^2.0.5",
     "webpack-hot-middleware": "^2.21.0",
     "webpack-merge": "^4.1.1",
