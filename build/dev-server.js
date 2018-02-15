@@ -16,6 +16,7 @@ const setupDevServer = expressApp => {
   );
 
   // dev middleware
+  process.env.VUE_ENV = "client";
   const clientCompiler = webpack(clientConfig);
   const devMiddleware = require("webpack-dev-middleware")(clientCompiler, {
     publicPath: clientConfig.output.publicPath,
@@ -47,6 +48,7 @@ const setupDevServer = expressApp => {
   );
 
   // watch and update server renderer
+  process.env.VUE_ENV = "server";
   const serverCompiler = webpack(serverConfig);
   const mfs = new MFS();
   serverCompiler.outputFileSystem = mfs;

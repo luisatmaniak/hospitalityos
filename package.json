@@ -7,8 +7,8 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development node server",
-    "build:client": "cross-env NODE_ENV=production webpack --progress --hide-modules --config ./build/webpack.client.js ",
-    "build:server": "cross-env NODE_ENV=production webpack --progress --hide-modules --config ./build/webpack.server.js",
+    "build:client": "cross-env NODE_ENV=production VUE_ENV=client webpack --progress --hide-modules --config ./build/webpack.client.js",
+    "build:server": "cross-env NODE_ENV=production VUE_ENV=server webpack --progress --hide-modules --config ./build/webpack.server.js",
     "build": "rimraf dist && yarn run build:client && yarn run build:server",
     "start": "cross-env NODE_ENV=production node server"
   },
@@ -18,8 +18,8 @@
     "not ie <= 10"
   ],
   "dependencies": {
+    "@babel/polyfill": "^7.0.0-beta.40",
     "axios": "^0.17.1",
-    "babel-polyfill": "^6.23.0",
     "express": "^4.16.2",
     "vue": "^2.5.11",
     "vue-router": "^3.0.1",
@@ -28,11 +28,10 @@
     "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-syntax-dynamic-import": "^6.18.0",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-stage-3": "^6.24.1",
+    "@babel/core": "^7.0.0-beta.40",
+    "@babel/preset-env": "^7.0.0-beta.40",
+    "@babel/preset-stage-3": "^7.0.0-beta.40",
+    "babel-loader": "^8.0.0-beta.0",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.2",

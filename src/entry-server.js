@@ -1,4 +1,3 @@
-import "babel-polyfill"
 import createApp from "./create-app";
 
 // This exported function will be called by `bundleRenderer`.

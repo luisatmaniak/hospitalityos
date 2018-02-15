@@ -6,12 +6,13 @@ const isProd = process.env.NODE_ENV === "production";
 const root = path.resolve(__dirname, "..");
 
 const webpackConfig = {
-  mode: isProd? "production" : "development",
+  mode: isProd ? "production" : "development",
   output: {
     path: path.resolve(root, "dist"),
     filename: isProd ? "[name].[chunkhash].js" : "[name].js",
     chunkFilename: isProd ? "[id].[chunkhash].js" : undefined,
-    publicPath: "/dist/"
+    publicPath: "/dist/",
+    jsonpFunction: 'mnkjsp'
   },
   module: {
     rules: [
@@ -54,6 +55,10 @@ const webpackConfig = {
     extensions: ["*", ".js", ".vue", ".json"]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.VUE_ENV': JSON.stringify(process.env.VUE_ENV),
+    }),
+
     new FriendlyErrorsPlugin(),
 
     // compat for webpack 4

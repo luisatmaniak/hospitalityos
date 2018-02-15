@@ -16,9 +16,6 @@
 </template>
 
 <script>
-// import OsButton from "./OsButton";
-// import ComplexComponent from "./ComplexComponent";
-
 export default {
   props: ["components"],
   components: {},

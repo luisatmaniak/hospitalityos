@@ -1,4 +1,3 @@
-import "babel-polyfill"
 import createApp from "./create-app";
 
 const { app, store, router } = createApp();

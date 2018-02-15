@@ -20,10 +20,6 @@ const webpackConfig = merge(baseWebpackConfig, {
   },
 
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.VUE_ENV': '"client"',
-    }),
-
     // This plugins generates `vue-ssr-client-manifest.json` in the
     // output directory.
     new VueSSRClientPlugin(),

@@ -27,13 +27,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     whitelist: /\.css$/
   }),
 
-  plugins: [
-    new webpack.DefinePlugin({
-      "process.env.VUE_ENV": '"server"'
-    }),
-
-    new VueSSRServerPlugin()
-  ],
+  plugins: [new VueSSRServerPlugin()],
 
   performance: {
     hints: false
