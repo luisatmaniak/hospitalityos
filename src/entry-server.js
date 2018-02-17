@@ -1,4 +1,4 @@
-import createApp from "./create-app";
+import createApp from './create-app'
 
 // This exported function will be called by `bundleRenderer`.
 // This is where we perform data-prefetching to determine the
@@ -7,15 +7,15 @@ import createApp from "./create-app";
 // return a Promise that resolves to the app instance.
 export default context => {
   return new Promise((resolve, reject) => {
-    const { app, store, router } = createApp();
+    const { app, store, router } = createApp()
 
-    router.push(context.url);
+    router.push(context.url)
 
     router.onReady(() => {
-      const matchedComponents = router.getMatchedComponents();
+      const matchedComponents = router.getMatchedComponents()
 
       if (!matchedComponents.length) {
-        return reject({ code: 404 });
+        return reject({ code: 404 })
       }
 
       // Call fetchData hooks on components matched by the route.
@@ -27,10 +27,10 @@ export default context => {
           if (Component.asyncData) {
             return Component.asyncData({
               store,
-              route: router.currentRoute
-            });
+              route: router.currentRoute,
+            })
           }
-        })
+        }),
       )
         .then(() => {
           // After all preFetch hooks are resolved, our store is now
@@ -39,10 +39,10 @@ export default context => {
           // inline the state in the HTML response. This allows the client-side
           // store to pick-up the server-side state without having to duplicate
           // the initial data fetching on the client.
-          context.state = store.state;
-          resolve(app);
+          context.state = store.state
+          resolve(app)
         })
-        .catch(reject);
-    }, reject);
-  });
-};
+        .catch(reject)
+    }, reject)
+  })
+}

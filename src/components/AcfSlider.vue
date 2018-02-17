@@ -7,16 +7,16 @@
 </template>
 
 <script>
-import Slider from "./Slider";
-import Slide from "./Slide";
-import ComponentRenderer from "./ComponentRenderer";
+import Slider from './Slider'
+import Slide from './Slide'
+import ComponentRenderer from './ComponentRenderer'
 
 export default {
-  props: ["slides"],
+  props: ['slides'],
   components: {
     Slider,
     Slide,
-    ComponentRenderer
-  }
-};
+    ComponentRenderer,
+  },
+}
 </script>

@@ -1,5 +1,4 @@
 const path = require('path')
-const webpack = require('webpack')
 const merge = require('webpack-merge')
 const SWPrecachePlugin = require('sw-precache-webpack-plugin')
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
@@ -15,7 +14,7 @@ const webpackConfig = merge(baseWebpackConfig, {
 
   optimization: {
     splitChunks: {
-      chunks: 'all'
+      chunks: 'all',
     },
   },
 

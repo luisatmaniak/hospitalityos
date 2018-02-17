@@ -10,14 +10,14 @@
 </template>
 
 <script>
-  import Slider from './Slider'
-  import Slide from './Slide'
+import Slider from './Slider'
+import Slide from './Slide'
 
-  export default {
-    props: ['image_2', 'image_1'],
-    component: {
-      Slider,
-      Slide
-    }
-  }
+export default {
+  props: ['image_2', 'image_1'],
+  component: {
+    Slider,
+    Slide,
+  },
+}
 </script>

@@ -1,9 +1,9 @@
-import createApp from "./create-app";
+import createApp from './create-app'
 
-const { app, store, router } = createApp();
+const { app, store, router } = createApp()
 
 if (window.__INITIAL_STATE__) {
-  store.replaceState(window.__INITIAL_STATE__);
+  store.replaceState(window.__INITIAL_STATE__)
 }
 
 router.onReady(() => {
@@ -12,37 +12,37 @@ router.onReady(() => {
   // the data that we already have. Using router.beforeResolve() so that all
   // async components are resolved.
   router.beforeResolve((to, from, next) => {
-    const matched = router.getMatchedComponents(to);
-    const prevMatched = router.getMatchedComponents(from);
+    const matched = router.getMatchedComponents(to)
+    // const prevMatched = router.getMatchedComponents(from)
 
-    let diffed = false;
+    // let diffed = false
     const activated = matched
     // matched.filter(
     //   (c, i) => diffed || (diffed = prevMatched[i] !== c)
     // );
 
     if (!activated.length) {
-      return next();
+      return next()
     }
 
     // start loading indicator
     Promise.all(
       activated.map(c => {
         if (c.asyncData) {
-          return c.asyncData({ store, route: to });
+          return c.asyncData({ store, route: to })
         }
-      })
+      }),
     )
       .then(() => {
         // stop loading indicator
-        next();
+        next()
       })
-      .catch(next);
-  });
+      .catch(next)
+  })
 
-  app.$mount("#app");
-});
+  app.$mount('#app')
+})
 
-if (navigator.serviceWorker && window.location.protocol === "https:") {
-  navigator.serviceWorker.register("/service-worker.js");
+if (navigator.serviceWorker && window.location.protocol === 'https:') {
+  navigator.serviceWorker.register('/service-worker.js')
 }

@@ -1,14 +1,13 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Page from "./pages/Page";
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Page from './pages/Page'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const createRouter = () =>
   new VueRouter({
-    mode: "history",
-    base: __dirname,
-    routes: [{ path: "/:slug", component: Page }]
-  });
+    mode: 'history',
+    routes: [{ path: '/:slug', component: Page }],
+  })
 
-export default createRouter;
+export default createRouter

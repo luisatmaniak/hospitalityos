@@ -7,22 +7,22 @@
 </template>
 
 <script>
-import ComponentRenderer from "../components/ComponentRenderer";
+import ComponentRenderer from '../components/ComponentRenderer'
 
 export default {
-  name: "page",
+  name: 'page',
   components: {
-    ComponentRenderer
+    ComponentRenderer,
   },
   asyncData: ({ store, route }) => {
-    return store.dispatch("requestPageBySlug", { slug: route.params.slug });
+    return store.dispatch('requestPageBySlug', { slug: route.params.slug })
   },
   computed: {
     page() {
-      return this.$store.state.pages[this.$route.params.slug];
-    }
-  }
-};
+      return this.$store.state.pages[this.$route.params.slug]
+    },
+  },
+}
 </script>
 
 <style>

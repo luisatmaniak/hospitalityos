@@ -17,16 +17,16 @@
 
 <script>
 export default {
-  props: ["components"],
+  props: ['components'],
   components: {},
   beforeCreate() {
     this.$options.components = {
       ...this.$options.components,
-      OsButton: () => import("./OsButton"),
-      ComplexComponent: () => import("./ComplexComponent"),
-      AcfSlider: () => import("./AcfSlider"),
-      TwoImageSlider: () => import("./TwoImageSlider")
-    };
-  }
-};
+      OsButton: () => import('./OsButton'),
+      ComplexComponent: () => import('./ComplexComponent'),
+      AcfSlider: () => import('./AcfSlider'),
+      TwoImageSlider: () => import('./TwoImageSlider'),
+    }
+  },
+}
 </script>

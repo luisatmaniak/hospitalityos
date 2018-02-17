@@ -14,23 +14,23 @@
 </template>
 
 <script>
-import OsButton from "./OsButton";
+import OsButton from './OsButton'
 
 export default {
-  props: ["title", "date", "items", "primary_button", "secondary_button"],
+  props: ['title', 'date', 'items', 'primary_button', 'secondary_button'],
   components: {
-    OsButton
-  }
-};
+    OsButton,
+  },
+}
 </script>
 
 <style scoped>
-  h2 {
-    margin-top: 0;
-  }
+h2 {
+  margin-top: 0;
+}
 
-  div {
-    padding: 10px;
-    border: 1px solid pink;
-  }
+div {
+  padding: 10px;
+  border: 1px solid pink;
+}
 </style>

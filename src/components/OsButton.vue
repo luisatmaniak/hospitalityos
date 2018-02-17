@@ -5,6 +5,6 @@
 
 <script>
 export default {
-  props: ["text", "link"]
-};
+  props: ['text', 'link'],
+}
 </script>
