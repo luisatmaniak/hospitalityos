@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h2>{{title}}</h2>
-    <p>{{date}}</p>
+    <h2>{{ title }}</h2>
+    <p>{{ date }}</p>
     <ul>
-      <li v-for="item in items">
-        {{item.item_label}}
+      <li v-for="item in items" :key="item.item_label">
+        {{ item.item_label }}
       </li>
     </ul>
     <os-button v-bind="primary_button"/>
@@ -17,10 +17,10 @@
 import OsButton from './OsButton'
 
 export default {
-  props: ['title', 'date', 'items', 'primary_button', 'secondary_button'],
   components: {
     OsButton,
   },
+  props: ['title', 'date', 'items', 'primary_button', 'secondary_button'],
 }
 </script>
 

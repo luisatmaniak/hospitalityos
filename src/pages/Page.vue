@@ -10,7 +10,7 @@
 import ComponentRenderer from '../components/ComponentRenderer'
 
 export default {
-  name: 'page',
+  name: 'Page',
   components: {
     ComponentRenderer,
   },

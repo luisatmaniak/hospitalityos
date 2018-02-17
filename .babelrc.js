@@ -1,13 +1,14 @@
 module.exports = {
   presets: [
     [
-      "@babel/preset-env",
+      '@babel/preset-env',
       {
         modules: false,
         loose: true,
-        useBuiltIns: "usage"
-      }
+        useBuiltIns: 'usage',
+      },
     ],
-    "@babel/preset-stage-3"
-  ]
-};
+    '@babel/preset-stage-3',
+  ],
+  plugins: ['transform-vue-jsx'],
+}

@@ -6,17 +6,18 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
+    "precommit": "lint-staged",
     "dev": "cross-env NODE_ENV=development node server",
-    "build:client": "cross-env NODE_ENV=production VUE_ENV=client webpack --progress --hide-modules --config ./build/webpack.client.js",
-    "build:server": "cross-env NODE_ENV=production VUE_ENV=server webpack --progress --hide-modules --config ./build/webpack.server.js",
+    "lint:css": "stylelint 'src/**/*.vue'",
+    "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "build:client":
+      "cross-env NODE_ENV=production VUE_ENV=client webpack --progress --hide-modules --config ./build/webpack.client.js",
+    "build:server":
+      "cross-env NODE_ENV=production VUE_ENV=server webpack --progress --hide-modules --config ./build/webpack.server.js",
     "build": "rimraf dist && yarn run build:client && yarn run build:server",
     "start": "cross-env NODE_ENV=production node server"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 10"
-  ],
+  "browserslist": ["> 1%", "last 2 versions", "not ie <= 10"],
   "dependencies": {
     "@babel/polyfill": "^7.0.0-beta.40",
     "axios": "^0.17.1",
@@ -31,7 +32,11 @@
     "@babel/core": "^7.0.0-beta.40",
     "@babel/preset-env": "^7.0.0-beta.40",
     "@babel/preset-stage-3": "^7.0.0-beta.40",
+    "babel-eslint": "^8.2.1",
+    "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-loader": "^8.0.0-beta.0",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.5.1",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
     "eslint": "^4.18.0",
@@ -44,6 +49,9 @@
     "node-sass": "^4.5.3",
     "prettier": "1.10.2",
     "sass-loader": "^6.0.6",
+    "stylelint": "^8.4.0",
+    "stylelint-config-recommended-scss": "^3.0.0",
+    "stylelint-scss": "^2.3.0",
     "sw-precache-webpack-plugin": "^0.11.4",
     "url-loader": "^0.6.2",
     "vue-loader": "^14.1.1",
@@ -54,5 +62,10 @@
     "webpack-hot-middleware": "^2.21.0",
     "webpack-merge": "^4.1.1",
     "webpack-node-externals": "^1.6.0"
+  },
+  "lint-staged": {
+    "*.vue": ["prettier --write", "eslint --ignore-path .gitignore --fix", "stylelint", "git add"],
+    "*.js": ["prettier --write", "eslint --ignore-path .gitignore --fix", "git add"],
+    "*.{json,css,md}": ["prettier --write", "git add"]
   }
 }
