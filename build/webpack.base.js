@@ -28,7 +28,7 @@ const webpackConfig = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          extractCSS: false && isProd,
+          extractCSS: false && process.env.VUE_ENV === 'client' && isProd,
           preserveWhitespace: false,
         },
       },
@@ -68,15 +68,6 @@ const webpackConfig = {
       },
     }),
   ],
-}
-
-// disable for webpack 4
-if (false && isProd) {
-  const ExtractTextPlugin = require('extract-text-webpack-plugin')
-
-  webpackConfig.plugins = (webpackConfig.plugins || []).concat([
-    new ExtractTextPlugin({ filename: 'common.[chunkhash].css' }),
-  ])
 }
 
 module.exports = webpackConfig

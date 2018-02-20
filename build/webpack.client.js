@@ -41,6 +41,12 @@ if (isProd) {
       staticFileGlobsIgnorePatterns: [/index\.html$/, /\.map$/],
     }),
   ])
+
+  // const ExtractTextPlugin = require('extract-text-webpack-plugin')
+  //
+  // webpackConfig.plugins = (webpackConfig.plugins || []).concat([
+  //   new ExtractTextPlugin({ filename: 'common.[chunkhash].css' }),
+  // ])
 }
 
 module.exports = webpackConfig
