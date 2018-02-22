@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import { sync } from 'vuex-router-sync'
 import App from './App'
-import createRouter from './routes'
 import createStore from './create-store'
+import createRouter from './routes'
 
 const createApp = () => {
   const store = createStore()
