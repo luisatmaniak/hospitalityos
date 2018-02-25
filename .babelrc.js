@@ -10,5 +10,5 @@ module.exports = {
     ],
     '@babel/preset-stage-3',
   ],
-  plugins: ['transform-vue-jsx'],
+  plugins: ['jsx-vue-functional', 'transform-vue-jsx'],
 }
