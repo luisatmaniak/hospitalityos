@@ -8,6 +8,7 @@
 
 <script>
 import ComponentRenderer from '../components/ComponentRenderer'
+import { pageBySlug, requestPageBySlug } from '../core/store/pages'
 
 export default {
   name: 'Page',
@@ -15,23 +16,12 @@ export default {
     ComponentRenderer,
   },
   asyncData: ({ store, route }) => {
-    return store.dispatch('requestPageBySlug', { slug: route.params.slug })
+    return store.dispatch(requestPageBySlug, { slug: route.params.slug })
   },
   computed: {
     page() {
-      return this.$store.state.pages[this.$route.params.slug]
+      return this.$store.getters[pageBySlug](this.$route.params.slug)
     },
   },
 }
 </script>
-
-<style>
-h1,
-h2 {
-  font-weight: normal;
-}
-
-a {
-  color: #42b983;
-}
-</style>

@@ -1,4 +1,7 @@
+import { $req } from './core/services/catalog.server'
+import http from './core/services/http/http.server'
 import createApp from './create-app'
+import createDiContainer from './services/create-di-container'
 
 // This exported function will be called by `bundleRenderer`.
 // This is where we perform data-prefetching to determine the
@@ -7,9 +10,14 @@ import createApp from './create-app'
 // return a Promise that resolves to the app instance.
 export default context => {
   return new Promise((resolve, reject) => {
-    const { app, store, router } = createApp()
+    const container = createDiContainer()
 
-    router.push(context.url)
+    container.constant($req, context.req)
+    container.register(http)
+
+    const { app, store, router } = createApp(container)
+
+    router.push(context.req.url)
 
     router.onReady(() => {
       const matchedComponents = router.getMatchedComponents()

@@ -1,31 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import * as api from './api'
+import inject from './core/store/inject-plugin'
+import pages from './core/store/pages'
 
 Vue.use(Vuex)
 
-const createStore = () => {
+const createStore = diContainer => {
   return new Vuex.Store({
-    state: {
-      pages: {},
+    strict: process.env.NODE_ENV !== 'production',
+    modules: {
+      pages,
     },
-    actions: {
-      requestPageBySlug: async ({ commit }, { slug }) => {
-        commit('REQUEST_PAGE')
-
-        try {
-          const page = await api.findPageBySlug(slug)
-          commit('REQUEST_PAGE_SUCCESS', { page })
-        } catch (error) {
-          commit('REQUEST_PAGE_FAIL', { error })
-        }
-      },
-    },
-    mutations: {
-      REQUEST_PAGE_SUCCESS(state, { page }) {
-        state.pages = { ...state.pages, [page.slug]: page }
-      },
-    },
+    plugins: [inject(diContainer)],
   })
 }
 

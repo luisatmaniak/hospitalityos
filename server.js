@@ -27,12 +27,25 @@ if (isProd) {
   const setupDevServer = require('./build/dev-server')
 
   setupDevServer(app).on('update', createAndSetRenderer)
+
+  // Setup proxy for API calls
+  const proxy = require('http-proxy-middleware')
+
+  app.use(
+    '/wp*',
+    proxy({
+      target: 'http://hospitalityos.test',
+      changeOrigin: true,
+    }),
+  )
 }
 
 const serve = file => express.static(path.join(__dirname, file))
 
 app.use('/dist', serve('./dist'))
 app.use('/service-worker.js', serve('./dist/service-worker.js'))
+
+app.get(['/favicon.ico', '/robots.txt'], (req, res) => res.sendStatus(404))
 
 app.get('*', (req, res) => {
   if (!renderer) {
@@ -54,7 +67,7 @@ app.get('*', (req, res) => {
     }
   }
 
-  const context = { url: req.url }
+  const context = { req }
 
   renderer
     .renderToString(context)

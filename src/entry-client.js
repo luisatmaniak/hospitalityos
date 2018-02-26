@@ -1,6 +1,12 @@
+import http from './core/services/http/http.client'
 import createApp from './create-app'
+import createDiContainer from './services/create-di-container'
 
-const { app, store, router } = createApp()
+const container = createDiContainer()
+
+container.register(http)
+
+const { app, store, router } = createApp(container)
 
 if (window.__INITIAL_STATE__) {
   store.replaceState(window.__INITIAL_STATE__)

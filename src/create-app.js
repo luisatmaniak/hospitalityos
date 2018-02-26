@@ -4,9 +4,9 @@ import App from './App'
 import createStore from './create-store'
 import createRouter from './routes'
 
-const createApp = () => {
-  const store = createStore()
-  const router = createRouter()
+const createApp = diContainer => {
+  const store = createStore(diContainer)
+  const router = createRouter(diContainer)
 
   sync(store, router)
 
