@@ -1,4 +1,5 @@
 import http from './core/services/http/http.client'
+import findAsyncData from './core/util/find-async-data'
 import createApp from './create-app'
 import createDiContainer from './services/create-di-container'
 
@@ -33,10 +34,15 @@ router.onReady(() => {
 
     // start loading indicator
     Promise.all(
-      activated.map(c => {
-        if (c.asyncData) {
-          return c.asyncData({ store, route: to })
-        }
+      activated.map(Component => {
+        return Promise.all(
+          findAsyncData(Component).map(asyncData =>
+            asyncData({
+              store,
+              route: router.currentRoute,
+            }),
+          ),
+        )
       }),
     )
       .then(() => {

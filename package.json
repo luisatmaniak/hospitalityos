@@ -73,6 +73,7 @@
   "lint-staged": {
     "*.vue": ["prettier --write", "eslint --ignore-path .gitignore --fix", "stylelint", "git add"],
     "*.js": ["prettier --write", "eslint --ignore-path .gitignore --fix", "git add"],
-    "*.{json,css,md}": ["prettier --write", "git add"]
+    "*.{scss,css}": ["prettier --write", "stylelint", "git add"],
+    "*.{json,md}": ["prettier --write", "git add"]
   }
 }
