@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import inject from './core/store/inject-plugin'
-import pages from './core/store/pages'
+import pages from './core/pages/pages'
 
 Vue.use(Vuex)
 

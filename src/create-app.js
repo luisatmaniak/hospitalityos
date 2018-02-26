@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import { sync } from 'vuex-router-sync'
 import App from './App'
+import AppProvider from './core/components/AppProvider'
 import createStore from './create-store'
 import createRouter from './routes'
+
+Vue.config.optionMergeStrategies.asyncData = Vue.config.optionMergeStrategies.method
 
 const createApp = diContainer => {
   const store = createStore(diContainer)
@@ -13,7 +16,13 @@ const createApp = diContainer => {
   const app = new Vue({
     router,
     store,
-    render: h => h(App),
+    render() {
+      return (
+        <AppProvider container={diContainer}>
+          <App />
+        </AppProvider>
+      )
+    },
   })
 
   return { app, store, router }

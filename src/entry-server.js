@@ -1,5 +1,6 @@
-import { $req } from './core/services/catalog.server'
+import { $req } from './core/catalog.server'
 import http from './core/services/http/http.server'
+import findAsyncData from './core/util/find-async-data'
 import createApp from './create-app'
 import createDiContainer from './services/create-di-container'
 
@@ -32,12 +33,16 @@ export default context => {
       // updated.
       Promise.all(
         matchedComponents.map(Component => {
-          if (Component.asyncData) {
-            return Component.asyncData({
-              store,
-              route: router.currentRoute,
-            })
-          }
+          // TODO mixin gets applied during rendering, so we need to look it up ahead of time
+          // decide if this is the correct approach
+          return Promise.all(
+            findAsyncData(Component).map(asyncData =>
+              asyncData({
+                store,
+                route: router.currentRoute,
+              }),
+            ),
+          )
         }),
       )
         .then(() => {

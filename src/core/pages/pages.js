@@ -5,6 +5,9 @@ import Vue from 'vue'
 export const pagesById = 'pagesById'
 export const pageById = 'pageById'
 export const pageBySlug = 'pageBySlug'
+export const pageErrorBySlug = 'pageErrorBySlug'
+export const pageInCurrentRoute = 'pageInCurrentRoute'
+export const pageErrorInCurrentRoute = 'pageErrorInCurrentRoute'
 
 // Actions
 export const requestPageBySlug = 'requestPageBySlug'
@@ -27,6 +30,13 @@ const pages = {
     [pageById]: (state, { pagesById }) => id => pagesById[id],
 
     [pageBySlug]: ({ bySlug }) => slug => bySlug[slug],
+
+    [pageErrorBySlug]: ({ loading }) => slug => (loading[slug] ? loading[slug].error : null),
+
+    [pageInCurrentRoute]: (state, { pageBySlug }, { route }) => pageBySlug(route.params.slug),
+
+    [pageErrorInCurrentRoute]: (state, { pageErrorBySlug }, { route }) =>
+      pageErrorBySlug(route.params.slug),
   },
 
   actions: {
@@ -41,7 +51,6 @@ const pages = {
           commit(requestPageFinished, { page: res.data[0], params })
         }
       } catch (error) {
-        console.error(error)
         commit(requestPageFinished, { error, params })
       }
     },

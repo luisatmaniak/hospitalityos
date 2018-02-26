@@ -1,4 +1,4 @@
-import { $http, API_URL } from '../catalog'
+import { $http, API_URL } from '../../catalog'
 import createAxiosInstance from './axios'
 
 const http = baseUrl => {

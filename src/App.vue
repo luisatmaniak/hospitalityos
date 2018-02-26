@@ -6,14 +6,12 @@
   </div>
 </template>
 
-<style lang="scss">
-body {
-  font-family: Helvetica, sans-serif;
+<script>
+export default {
+  components: {},
 }
+</script>
 
-#app > a {
-  color: red;
-  margin: 0 10px;
-  display: inline-block;
-}
+<style lang="scss">
+@import './core/style/reboot.scss';
 </style>

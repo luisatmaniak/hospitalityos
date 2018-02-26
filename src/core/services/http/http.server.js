@@ -1,5 +1,5 @@
-import { $http, API_URL } from '../catalog'
-import { $req } from '../catalog.server'
+import { $http, API_URL } from '../../catalog'
+import { $req } from '../../catalog.server'
 import createAxiosInstance from './axios'
 
 const http = (baseUrl, req) => {
